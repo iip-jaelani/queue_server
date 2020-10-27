@@ -34,8 +34,11 @@ router.post("/print_queue", async (req, res) => {
 	);
 	printer.drawLine();
 	printer.cut();
+	printer.openCashDrawer();
+
 	try {
 		let execute = printer.execute();
+		console.log(execute);
 		res.send({
 			message: "success print data",
 			error: false,
