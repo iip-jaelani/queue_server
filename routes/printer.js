@@ -8,7 +8,7 @@ router.post("/print_queue", async (req, res) => {
 	const hostIp = host;
 	let printer = new ThermalPrinter({
 		type: PrinterTypes.EPSON,
-		interface: `tcp://${hostIp}:9100`, // Printer interface
+		interface: `${host}`, // Printer interface
 		lineCharacter: "-",
 		characterSet: "SLOVENIA", // Character set - default: SLOVENIA
 		removeSpecialCharacters: false, // Removes special characters - default: false
