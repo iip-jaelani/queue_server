@@ -20,41 +20,47 @@ router.post("/print_queue", async (req, res) => {
 			error: true,
 		});
 	}
-	printer.bold(true);
-	printer.alignCenter();
-	printer.setTextSize(1, 1);
-	printer.println(`${namePartner}`);
-	printer.newLine();
-	printer.newLine();
-	printer.println(`${serviceName}`);
-	printer.newLine();
-	printer.newLine();
-	printer.setTextSize(4, 4);
-	printer.println(`${numberQueue}`);
-	printer.newLine();
-	printer.newLine();
-	printer.setTextNormal();
-	printer.drawLine();
-	printer.println(
-		`Tanggal: ${Moment(new Date()).format("DD-MM-YYYY, h:mm:ss a")}`
-	);
-	printer.drawLine();
-	printer.cut();
-	try {
-		printer.execute().then((response) => {
-			console.log(response);
-			res.send({
-				message: "success print data",
-				error: false,
-			});
-		});
-	} catch (error) {
-		res.send({
-			message: "failed print data",
-			error: true,
-		});
-		console.log("Print failed:", error);
-	}
+	// /___________________
+	// printer.bold(true);
+	// printer.alignCenter();
+	// printer.setTextSize(1, 1);
+	// printer.println(`${namePartner}`);
+	// printer.newLine();
+	// printer.newLine();
+	// printer.println(`${serviceName}`);
+	// printer.newLine();
+	// printer.newLine();
+	// printer.setTextSize(4, 4);
+	// printer.println(`${numberQueue}`);
+	// printer.newLine();
+	// printer.newLine();
+	// printer.setTextNormal();
+	// printer.drawLine();
+	// printer.println(
+	// 	`Tanggal: ${Moment(new Date()).format("DD-MM-YYYY, h:mm:ss a")}`
+	// );
+	// printer.drawLine();
+	// printer.cut();
+	// /___________________
+	// try {
+	// 	printer.execute().then((response) => {
+	// 		console.log(response);
+	// 		res.send({
+	// 			message: "success print data",
+	// 			error: false,
+	// 		});
+	// 	});
+	// } catch (error) {
+	// 	res.send({
+	// 		message: "failed print data",
+	// 		error: true,
+	// 	});
+	// 	console.log("Print failed:", error);
+	// }
+	res.send({
+		message: "print data",
+		error: true,
+	});
 });
 
 module.exports = router;
