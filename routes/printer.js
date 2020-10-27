@@ -11,37 +11,47 @@ router.post("/print_queue", async (req, res) => {
 		interface: `tcp://${hostIp}:9100`, // Printer interface
 		lineCharacter: "-",
 		options: {
-			timeout: 5000,
+			timeout: 1000,
 		},
+		characterSet: "SLOVENIA", // Character set - default: SLOVENIA
+		removeSpecialCharacters: false, // Removes special characters - default: false
 	});
-	printer.bold(true);
-	printer.alignCenter();
-	printer.setTextSize(1, 1);
-	printer.println(`${namePartner}`);
-	printer.newLine();
-	printer.newLine();
-	printer.println(`${serviceName}`);
-	printer.newLine();
-	printer.newLine();
-	printer.setTextSize(4, 4);
-	printer.println(`${numberQueue}`);
-	printer.newLine();
-	printer.newLine();
-	printer.setTextNormal();
-	printer.drawLine();
-	printer.println(
-		`Tanggal: ${Moment(new Date()).format("DD-MM-YYYY, h:mm:ss a")}`
-	);
-	printer.drawLine();
+	let isConnect = await printer.isPrinterConnected();
+	if (!isConnect) {
+		res.send({
+			message: "Error connect printer",
+			error: true,
+		});
+	}
+	// printer.bold(true);
+	// printer.alignCenter();
+	// printer.setTextSize(1, 1);
+	// printer.println(`${namePartner}`);
+	// printer.newLine();
+	// printer.newLine();
+	// printer.println(`${serviceName}`);
+	// printer.newLine();
+	// printer.newLine();
+	// printer.setTextSize(4, 4);
+	// printer.println(`${numberQueue}`);
+	// printer.newLine();
+	// printer.newLine();
+	// printer.setTextNormal();
+	// printer.drawLine();
+	// printer.println(
+	// 	`Tanggal: ${Moment(new Date()).format("DD-MM-YYYY, h:mm:ss a")}`
+	// );
+	// printer.drawLine();
 	printer.cut();
 	printer.openCashDrawer();
 
 	try {
-		let execute = printer.execute();
-		console.log(execute);
-		res.send({
-			message: "success print data",
-			error: false,
+		printer.execute().then((response) => {
+			console.log(response);
+			res.send({
+				message: "success print data",
+				error: false,
+			});
 		});
 	} catch (error) {
 		res.send({
