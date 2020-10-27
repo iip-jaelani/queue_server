@@ -59,6 +59,7 @@ router.post("/print_queue", async (req, res) => {
 	// }
 	res.send({
 		message: "print data",
+		isConnected: isConnect,
 		error: true,
 	});
 });
