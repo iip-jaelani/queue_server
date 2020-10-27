@@ -17,6 +17,7 @@ router.post("/print_queue", async (req, res) => {
 		removeSpecialCharacters: false, // Removes special characters - default: false
 	});
 	let isConnect = await printer.isPrinterConnected();
+	console.log(isConnect);
 	if (!isConnect) {
 		res.send({
 			message: "Error connect printer",
@@ -43,8 +44,6 @@ router.post("/print_queue", async (req, res) => {
 	);
 	printer.drawLine();
 	printer.cut();
-	printer.openCashDrawer();
-
 	try {
 		printer.execute().then((response) => {
 			console.log(response);
