@@ -11,7 +11,8 @@ router.use("/", (req, res) =>
 router.all("*", (req, res) =>
 	res.send({
 		error: true,
-		message: "What are you doing ?",
+		message: "What are you doing !!!",
+		ip: req.ip,
 	})
 );
 module.exports = router;
