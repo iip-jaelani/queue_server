@@ -23,25 +23,25 @@ router.post("/print_queue", async (req, res) => {
 			error: true,
 		});
 	}
-	// printer.bold(true);
-	// printer.alignCenter();
-	// printer.setTextSize(1, 1);
-	// printer.println(`${namePartner}`);
-	// printer.newLine();
-	// printer.newLine();
-	// printer.println(`${serviceName}`);
-	// printer.newLine();
-	// printer.newLine();
-	// printer.setTextSize(4, 4);
-	// printer.println(`${numberQueue}`);
-	// printer.newLine();
-	// printer.newLine();
-	// printer.setTextNormal();
-	// printer.drawLine();
-	// printer.println(
-	// 	`Tanggal: ${Moment(new Date()).format("DD-MM-YYYY, h:mm:ss a")}`
-	// );
-	// printer.drawLine();
+	printer.bold(true);
+	printer.alignCenter();
+	printer.setTextSize(1, 1);
+	printer.println(`${namePartner}`);
+	printer.newLine();
+	printer.newLine();
+	printer.println(`${serviceName}`);
+	printer.newLine();
+	printer.newLine();
+	printer.setTextSize(4, 4);
+	printer.println(`${numberQueue}`);
+	printer.newLine();
+	printer.newLine();
+	printer.setTextNormal();
+	printer.drawLine();
+	printer.println(
+		`Tanggal: ${Moment(new Date()).format("DD-MM-YYYY, h:mm:ss a")}`
+	);
+	printer.drawLine();
 	printer.cut();
 	printer.openCashDrawer();
 
