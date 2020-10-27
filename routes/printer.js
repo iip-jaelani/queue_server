@@ -10,12 +10,10 @@ router.post("/print_queue", async (req, res) => {
 		type: PrinterTypes.EPSON,
 		interface: `tcp://${hostIp}:9100`, // Printer interface
 		lineCharacter: "-",
-		options: {
-			timeout: 1000,
-		},
 		characterSet: "SLOVENIA", // Character set - default: SLOVENIA
 		removeSpecialCharacters: false, // Removes special characters - default: false
 	});
+
 	let isConnect = await printer.isPrinterConnected();
 	console.log(isConnect);
 	if (!isConnect) {
